@@ -27,7 +27,7 @@ namespace ListaDeFilmes.Data.Mappings
 
             builder.Property(f => f.Comentarios).HasColumnName("Comentarios_Filme").HasColumnType("varchar(300)").IsRequired(false);
 
-            builder.Property(p => p.Imagem).HasColumnType("varchar(200)").IsRequired();
+            //builder.Property(p => p.Imagem).HasColumnType("varchar(200)").IsRequired();
 
             builder.Property(p => p.Valor).HasColumnType("decimal(18,2)").IsRequired();
 

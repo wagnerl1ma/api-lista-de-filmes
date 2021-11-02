@@ -17,7 +17,7 @@ namespace ListaDeFilmes.Business.Models
 
         public string Comentarios { get; set; }
 
-        public string Imagem { get; set; }
+        //public string Imagem { get; set; }
 
         public decimal Valor { get; set; }
 
