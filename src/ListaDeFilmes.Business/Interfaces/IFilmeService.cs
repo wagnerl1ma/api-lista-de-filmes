@@ -8,8 +8,8 @@ namespace ListaDeFilmes.Business.Interfaces
 {
     public interface IFilmeService : IDisposable
     {
-        Task Adicionar(Filme fornecedor);
-        Task Atualizar(Filme fornecedor);
+        Task<bool> Adicionar(Filme fornecedor);
+        Task<bool> Atualizar(Filme fornecedor);
         Task Remover(Guid id);
         //Task<Filme> ObterFilmePreenchido(Guid id);
     }
