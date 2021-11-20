@@ -77,12 +77,23 @@ namespace ListaDeFilmes.Api.Controllers
                 return BadRequest(); //exemplo teste
             }
 
+            var filmeAtualizacao = await ObterFilmePreenchido(id);
+
+            filmeViewModel.Genero = filmeAtualizacao.Genero;
+            filmeAtualizacao.GeneroId = filmeViewModel.GeneroId;
+            filmeAtualizacao.Nome = filmeViewModel.Nome;
+            filmeAtualizacao.Classificacao = filmeViewModel.Classificacao;
+            filmeAtualizacao.Ano = filmeViewModel.Ano;
+            filmeAtualizacao.Comentarios = filmeViewModel.Comentarios;
+            filmeAtualizacao.Valor = filmeViewModel.Valor;
+            filmeAtualizacao.Ativo = filmeViewModel.Ativo;
+
             if (!ModelState.IsValid)
                 //return CustomResponse(ModelState);
                 return BadRequest(); //exemplo teste
 
             var filme = _mapper.Map<Filme>(filmeViewModel);
-            await _filmeService.Atualizar(filme);
+            await _filmeService.Atualizar(_mapper.Map<Filme>(filmeAtualizacao));
 
             //return CustomResponse(filmeViewModel);
             return Ok(filme);  //exemplo teste

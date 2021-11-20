@@ -22,7 +22,8 @@ namespace ListaDeFilmes.Business.Services
         public async Task<bool> Adicionar(Filme filme)
         {
             //se a Validação não for valida, retorna a notificação e nao faz a adição
-            if (!ExecutarValidacao(new FilmeValidation(), filme)) return false;
+            if (!ExecutarValidacao(new FilmeValidation(), filme)) 
+                return false;
 
             await _filmeRepository.Adicionar(filme);
             return true;
@@ -31,7 +32,8 @@ namespace ListaDeFilmes.Business.Services
         public async Task<bool> Atualizar(Filme filme)
         {
             if (!ExecutarValidacao(new FilmeValidation(), filme)
-                || !ExecutarValidacao(new GeneroValidation(), filme.Genero)) return false;
+                || !ExecutarValidacao(new GeneroValidation(), filme.Genero)) 
+                return false;
 
             filme.Genero = await _generoRepository.ObterPorId(filme.GeneroId);
 
@@ -44,13 +46,13 @@ namespace ListaDeFilmes.Business.Services
             await _filmeRepository.Remover(id);
         }
 
-        //public async Task<Filme> ObterFilmePreenchido(Guid id)
-        //{
-        //    var filme = await _filmeRepository.ObterFilmeGenero(id);
-        //    filme.Genero = await _generoRepository.ObterPorId(filme.GeneroId);
+        public async Task<Filme> ObterFilmePreenchido(Guid id)
+        {
+            var filme = await _filmeRepository.ObterFilmeGenero(id);
+            filme.Genero = await _generoRepository.ObterPorId(filme.GeneroId);
 
-        //    return filme;
-        //}
+            return filme;
+        }
 
         public void Dispose()
         {

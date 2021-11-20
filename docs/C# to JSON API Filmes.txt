@@ -1,0 +1,63 @@
+C# to JSON
+
+ [GeneroViewModel]
+{
+  "id": "00000000-0000-0000-0000-000000000000",
+  "nome": null,
+  "filmes": null
+}
+
+  [FilmeViewModel]
+{
+  "id": "00000000-0000-0000-0000-000000000000",
+  "nome": null,
+  "dataCadastro": null,
+  "classificacao": null,
+  "ano": null,
+  "comentarios": null,
+  "valor": 0.0,
+  "ativo": false,
+  "filmesAtores": null,
+  "genero": null,
+  "generoId": "00000000-0000-0000-0000-000000000000",
+  "generos": null,
+  "diretor": null,
+  "diretorId": null,
+  "produtora": null,
+  "produtoraId": null
+}
+
+ [FilmeAtorViewModel]
+{
+  "id": "00000000-0000-0000-0000-000000000000",
+  "filme": null,
+  "filmeId": "00000000-0000-0000-0000-000000000000",
+  "ator": null,
+  "atorId": "00000000-0000-0000-0000-000000000000"
+}
+
+ [AtorViewModel]
+{
+  "id": "00000000-0000-0000-0000-000000000000",
+  "nome": null,
+  "filmesAtores": null
+}
+
+ [DiretorViewModel]
+{
+  "id": "00000000-0000-0000-0000-000000000000",
+  "nome": null,
+  "filmes": null
+}
+
+  [ProdutoraViewModel]
+{
+  "id": "00000000-0000-0000-0000-000000000000",
+  "nome": null,
+  "filmes": null
+}
+
+  
+  
+  
+  

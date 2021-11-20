@@ -16,20 +16,24 @@ namespace ListaDeFilmes.Business.Services
         {
             _generoRepository = generoRepository;
         }
-        public async Task Adicionar(Genero genero)
+        public async Task<bool> Adicionar(Genero genero)
         {
             //se a Validação não for valida, retorna a notificação e nao faz a adição
-            if (!ExecutarValidacao(new GeneroValidation(), genero)) return;
+            if (!ExecutarValidacao(new GeneroValidation(), genero)) 
+                return false;
 
             await _generoRepository.Adicionar(genero);
+            return true;
         }
 
-        public async Task Atualizar(Genero genero)
+        public async Task<bool> Atualizar(Genero genero)
         {
             //se a Validação não for valida, retorna e nao faz a atualização
-            if (!ExecutarValidacao(new GeneroValidation(), genero)) return;
+            if (!ExecutarValidacao(new GeneroValidation(), genero)) 
+                return false;
 
             await _generoRepository.Atualizar(genero);
+            return true;
         }
 
         public async Task Remover(Guid id)
