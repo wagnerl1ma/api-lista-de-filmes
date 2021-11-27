@@ -32,9 +32,15 @@ namespace ListaDeFilmes.Api
 
             services.AddAutoMapper(typeof(Startup));
 
-            services.ResolveDependencies();
-
             services.AddControllers();
+
+            // Configuração para customizar as saídas de erro da ModelState
+            services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.SuppressModelStateInvalidFilter = true;
+            });
+
+            services.ResolveDependencies();
 
             // Ignorar looping Json
             services.AddControllersWithViews()

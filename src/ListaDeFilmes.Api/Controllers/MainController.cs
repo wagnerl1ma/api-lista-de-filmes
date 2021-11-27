@@ -73,7 +73,8 @@ namespace ListaDeFilmes.Api.Controllers
 
         protected void NotificarErroModelInvalida(ModelStateDictionary modelState)
         {
-            var erros = modelState.Values.SelectMany(e => e.Errors);
+            var erros = modelState.Values.SelectMany(e => e.Errors); // coleções dos erros
+
             foreach (var erro in erros)
             {
                 var errorMsg = erro.Exception == null ? erro.ErrorMessage : erro.Exception.Message;

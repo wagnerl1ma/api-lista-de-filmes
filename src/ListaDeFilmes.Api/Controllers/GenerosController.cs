@@ -54,14 +54,14 @@ namespace ListaDeFilmes.Api.Controllers
         public async Task<ActionResult<GeneroViewModel>> Adicionar(GeneroViewModel generoViewModel)
         {
             if (!ModelState.IsValid)
-                return BadRequest();
-            //return CustomResponse(ModelState);
+                //return BadRequest(); //exemplo teste
+                return CustomResponse(ModelState);
 
             var genero = _mapper.Map<Genero>(generoViewModel);
             await _generoService.Adicionar(genero);
 
-            //return CustomResponse(filmeViewModel);
-            return Ok(genero);
+            return CustomResponse(generoViewModel);
+            //return Ok(generoViewModel); //exemplo teste
         }
 
         //[ClaimsAuthorize("Generos", "Editar")]
@@ -71,19 +71,19 @@ namespace ListaDeFilmes.Api.Controllers
             if (id != generoViewModel.Id)
             {
                 NotificarErro("O id informado não é o mesmo que foi passado na query");
-                //return CustomResponse(filmeViewModel);
-                return BadRequest(); //exemplo teste
+                return CustomResponse(generoViewModel);
+                //return BadRequest(); //exemplo teste
             }
 
             if (!ModelState.IsValid)
-                //return CustomResponse(ModelState);
-                return BadRequest(); //exemplo teste
+                return CustomResponse(ModelState);
+                //return BadRequest(); //exemplo teste
 
             var genero = _mapper.Map<Genero>(generoViewModel);
             await _generoService.Atualizar(genero);
 
-            //return CustomResponse(filmeViewModel);
-            return Ok(genero);  //exemplo teste
+            return CustomResponse(generoViewModel);
+            //return Ok(generoViewModel);  //exemplo teste
         }
 
         //[ClaimsAuthorize("Generos", "Excluir")]
@@ -97,8 +97,9 @@ namespace ListaDeFilmes.Api.Controllers
 
             await _generoService.Remover(id);
 
-            //return CustomResponse(filmeViewModel);
-            return Ok(generoViewModel);  //exemplo teste
+            return CustomResponse();
+            //return CustomResponse(generoViewModel); // se quiser mostrar o objeto que foi excluído, colocar o para o parametro "generoViewModel" para retornar na resposta
+            //return Ok(generoViewModel);  //exemplo teste
         }
 
 

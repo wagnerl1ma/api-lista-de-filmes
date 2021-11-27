@@ -56,14 +56,14 @@ namespace ListaDeFilmes.Api.Controllers
         public async Task<ActionResult<FilmeViewModel>> Adicionar(FilmeViewModel filmeViewModel)
         {
             if (!ModelState.IsValid)
-                return BadRequest();
-                //return CustomResponse(ModelState);
+                //return BadRequest(); //exemplo teste
+                return CustomResponse(ModelState);
 
             var filme = _mapper.Map<Filme>(filmeViewModel);
             await _filmeService.Adicionar(filme);
 
-            //return CustomResponse(filmeViewModel);
-            return Ok(filme);
+            return CustomResponse(filmeViewModel);
+            //return Ok(filmeViewModel); //exemplo teste
         }
 
         //[ClaimsAuthorize("Filmes", "Editar")]
@@ -73,8 +73,8 @@ namespace ListaDeFilmes.Api.Controllers
             if (id != filmeViewModel.Id)
             {
                 NotificarErro("O id informado não é o mesmo que foi passado na query");
-                //return CustomResponse(filmeViewModel);
-                return BadRequest(); //exemplo teste
+                return CustomResponse(filmeViewModel);
+                //return BadRequest(); //exemplo teste
             }
 
             var filmeAtualizacao = await ObterFilmePreenchido(id);
@@ -89,14 +89,14 @@ namespace ListaDeFilmes.Api.Controllers
             filmeAtualizacao.Ativo = filmeViewModel.Ativo;
 
             if (!ModelState.IsValid)
-                //return CustomResponse(ModelState);
-                return BadRequest(); //exemplo teste
+                return CustomResponse(ModelState);
+                //return BadRequest(); //exemplo teste
 
             var filme = _mapper.Map<Filme>(filmeViewModel);
             await _filmeService.Atualizar(_mapper.Map<Filme>(filmeAtualizacao));
 
-            //return CustomResponse(filmeViewModel);
-            return Ok(filme);  //exemplo teste
+            return CustomResponse(filmeViewModel);
+            //return Ok(filmeViewModel);  //exemplo teste
 
         }
 
@@ -112,8 +112,9 @@ namespace ListaDeFilmes.Api.Controllers
 
             await _filmeService.Remover(id);
 
-            //return CustomResponse(filmeViewModel);
-            return Ok(filmeViewModel);  //exemplo teste
+            return CustomResponse();
+            //return CustomResponse(filmeViewModel); // se quiser mostrar o objeto que foi excluído, colocar o para o parametro "filmeViewModel" para retornar na resposta
+            //return Ok(filmeViewModel);  //exemplo teste
         }
 
         private async Task<FilmeViewModel> ObterFilmePreenchido(Guid id)
