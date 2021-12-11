@@ -32,13 +32,7 @@ namespace ListaDeFilmes.Api
 
             services.AddAutoMapper(typeof(Startup));
 
-            services.AddControllers();
-
-            // Configuração para customizar as saídas de erro da ModelState
-            services.Configure<ApiBehaviorOptions>(options =>
-            {
-                options.SuppressModelStateInvalidFilter = true;
-            });
+            services.AddApiConfig();
 
             services.ResolveDependencies();
 
@@ -51,21 +45,17 @@ namespace ListaDeFilmes.Api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+            //app.UseAuthentication(); // precisa vir antes da configuração do MVC, se não, não vai funcionar
 
-            app.UseHttpsRedirection();
+            app.UseApiConfig(env);
 
-            app.UseRouting();
+            //app.UseSwaggerConfig(provider);
 
-            app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            //app.UseHealthChecks("/api/hc", new HealthCheckOptions()
+            //{
+            //    Predicate = _ => true,
+            //    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+            //});
         }
     }
 }

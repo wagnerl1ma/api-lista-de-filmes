@@ -77,7 +77,7 @@ namespace ListaDeFilmes.Api.Controllers
                 //return BadRequest(); //exemplo teste
             }
 
-            var filmeAtualizacao = await ObterFilmePreenchido(id);
+            var filmeAtualizacao = await ObterFilmePreenchido(id); //captura a informção do banco e faz a atualização
 
             filmeViewModel.Genero = filmeAtualizacao.Genero;
             filmeAtualizacao.GeneroId = filmeViewModel.GeneroId;
