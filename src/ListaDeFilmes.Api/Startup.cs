@@ -30,6 +30,8 @@ namespace ListaDeFilmes.Api
         {
             services.AddDbContext<ListaDeFilmesContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+            services.AddIdentityConfig(Configuration);
+
             services.AddAutoMapper(typeof(Startup));
 
             services.AddApiConfig();
@@ -45,7 +47,7 @@ namespace ListaDeFilmes.Api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            //app.UseAuthentication(); // precisa vir antes da configuração do MVC, se não, não vai funcionar
+            app.UseAuthentication(); // precisa vir antes da configuração do MVC, se não, não vai funcionar
 
             app.UseApiConfig(env);
 
