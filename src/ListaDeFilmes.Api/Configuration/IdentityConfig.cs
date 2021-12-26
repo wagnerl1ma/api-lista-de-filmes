@@ -1,4 +1,5 @@
 ﻿using ListaDeFilmes.Api.Data;
+using ListaDeFilmes.Api.Extensions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -19,7 +20,7 @@ namespace ListaDeFilmes.Api.Configuration
             services.AddDefaultIdentity<IdentityUser>()
                     .AddRoles<IdentityRole>()
                     .AddEntityFrameworkStores<ApplicationDbContext>()
-                    //.AddErrorDescriber<IdentityMensagensPortugues>() // add mensagens de erro em português
+                    .AddErrorDescriber<IdentityMensagensPortugues>() // add mensagens de erro em português
                     .AddDefaultTokenProviders();
 
             // JWT
