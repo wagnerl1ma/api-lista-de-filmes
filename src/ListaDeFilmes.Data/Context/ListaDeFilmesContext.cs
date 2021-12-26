@@ -9,7 +9,7 @@ namespace ListaDeFilmes.Data.Context
 {
     public class ListaDeFilmesContext : DbContext
     {
-        public ListaDeFilmesContext(DbContextOptions options) : base(options)
+        public ListaDeFilmesContext(DbContextOptions<ListaDeFilmesContext> options) : base(options)
         {
             ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
             ChangeTracker.AutoDetectChangesEnabled = false;
