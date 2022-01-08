@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace ListaDeFilmes.Api.Controllers
 {
+    [Authorize]
     [Route("api/generos")]
     public class GenerosController : MainController
     {

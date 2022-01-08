@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace ListaDeFilmes.Api.Controllers
 {
+    [Authorize]
     [Route("api/filmes")]
     public class FilmesController : MainController
     {
