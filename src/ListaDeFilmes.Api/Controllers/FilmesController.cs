@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ListaDeFilmes.Api.Extensions;
 using ListaDeFilmes.Api.ViewModels;
 using ListaDeFilmes.Business.Interfaces;
 using ListaDeFilmes.Business.Models;
@@ -52,7 +53,7 @@ namespace ListaDeFilmes.Api.Controllers
         }
 
 
-        //[ClaimsAuthorize("Filmes", "Adicionar")]
+        [ClaimsAuthorize("Filmes", "Adicionar")]
         [HttpPost]
         public async Task<ActionResult<FilmeViewModel>> Adicionar(FilmeViewModel filmeViewModel)
         {
@@ -67,7 +68,7 @@ namespace ListaDeFilmes.Api.Controllers
             //return Ok(filmeViewModel); //exemplo teste
         }
 
-        //[ClaimsAuthorize("Filmes", "Editar")]
+        [ClaimsAuthorize("Filmes", "Atualizar")]
         [HttpPut("{id:guid}")]
         public async Task<ActionResult<FilmeViewModel>> Atualizar(Guid id, FilmeViewModel filmeViewModel)
         {
@@ -102,7 +103,7 @@ namespace ListaDeFilmes.Api.Controllers
         }
 
 
-        //[ClaimsAuthorize("Filmes", "Excluir")]
+        [ClaimsAuthorize("Filmes", "Excluir")]
         [HttpDelete("{id:guid}")]
         public async Task<ActionResult<FilmeViewModel>> Excluir(Guid id)
         {

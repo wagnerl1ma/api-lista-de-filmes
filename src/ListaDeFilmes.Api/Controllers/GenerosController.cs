@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ListaDeFilmes.Api.Extensions;
 using ListaDeFilmes.Api.ViewModels;
 using ListaDeFilmes.Business.Interfaces;
 using ListaDeFilmes.Business.Models;
@@ -50,7 +51,7 @@ namespace ListaDeFilmes.Api.Controllers
             return genero;
         }
 
-        //[ClaimsAuthorize("Generos", "Adicionar")]
+        [ClaimsAuthorize("Generos", "Adicionar")]
         [HttpPost]
         public async Task<ActionResult<GeneroViewModel>> Adicionar(GeneroViewModel generoViewModel)
         {
@@ -65,7 +66,7 @@ namespace ListaDeFilmes.Api.Controllers
             //return Ok(generoViewModel); //exemplo teste
         }
 
-        //[ClaimsAuthorize("Generos", "Editar")]
+        [ClaimsAuthorize("Generos", "Atualizar")]
         [HttpPut("{id:guid}")]
         public async Task<ActionResult<GeneroViewModel>> Atualizar(Guid id, GeneroViewModel generoViewModel)
         {
@@ -87,7 +88,7 @@ namespace ListaDeFilmes.Api.Controllers
             //return Ok(generoViewModel);  //exemplo teste
         }
 
-        //[ClaimsAuthorize("Generos", "Excluir")]
+        [ClaimsAuthorize("Generos", "Excluir")]
         [HttpDelete("{id:guid}")]
         public async Task<ActionResult<GeneroViewModel>> Excluir(Guid id)
         {
