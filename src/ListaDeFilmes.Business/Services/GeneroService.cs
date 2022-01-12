@@ -11,6 +11,7 @@ namespace ListaDeFilmes.Business.Services
     public class GeneroService : BaseService, IGeneroService
     {
         private readonly IGeneroRepository _generoRepository;
+        //private readonly IUser _user;  caso necessitar capturar a informação do usuário(identity) logado, injetar o IUser no construtor.
 
         public GeneroService(IGeneroRepository generoRepository, INotificador notificador) : base(notificador)
         {

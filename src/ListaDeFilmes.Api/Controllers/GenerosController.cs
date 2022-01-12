@@ -24,7 +24,8 @@ namespace ListaDeFilmes.Api.Controllers
         public GenerosController(IGeneroRepository generoRepository,
                                  IGeneroService generoService,
                                  IMapper mapper,
-                                 INotificador notificador) : base(notificador)
+                                 INotificador notificador, 
+                                 IUser user) : base(notificador, user)
         {
             _generoRepository = generoRepository;
             _generoService = generoService;

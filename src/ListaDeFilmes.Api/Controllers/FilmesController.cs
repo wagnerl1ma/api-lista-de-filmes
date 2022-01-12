@@ -25,7 +25,8 @@ namespace ListaDeFilmes.Api.Controllers
                                 IFilmeService filmeService,
                                 IGeneroRepository generoRepository,
                                 IMapper mapper,
-                                INotificador notificador) : base(notificador)
+                                INotificador notificador, 
+                                IUser user) : base(notificador, user)
         {
             _filmeRepository = filmeRepository;
             _filmeService = filmeService;
