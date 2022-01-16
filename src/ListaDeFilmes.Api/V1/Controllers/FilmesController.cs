@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ListaDeFilmes.Api.Controllers;
 using ListaDeFilmes.Api.Extensions;
 using ListaDeFilmes.Api.ViewModels;
 using ListaDeFilmes.Business.Interfaces;
@@ -10,10 +11,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ListaDeFilmes.Api.Controllers
+namespace ListaDeFilmes.Api.V1.Controllers
 {
     [Authorize]
-    [Route("api/filmes")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/filmes")]
+    //[Route("api/filmes")]
     public class FilmesController : MainController
     {
         private readonly IFilmeRepository _filmeRepository;
@@ -21,11 +24,11 @@ namespace ListaDeFilmes.Api.Controllers
         private readonly IGeneroRepository _generoRepository;
         private readonly IMapper _mapper;
 
-        public FilmesController(IFilmeRepository filmeRepository, 
+        public FilmesController(IFilmeRepository filmeRepository,
                                 IFilmeService filmeService,
                                 IGeneroRepository generoRepository,
                                 IMapper mapper,
-                                INotificador notificador, 
+                                INotificador notificador,
                                 IUser user) : base(notificador, user)
         {
             _filmeRepository = filmeRepository;
@@ -93,7 +96,7 @@ namespace ListaDeFilmes.Api.Controllers
 
             if (!ModelState.IsValid)
                 return CustomResponse(ModelState);
-                //return BadRequest(); //exemplo teste
+            //return BadRequest(); //exemplo teste
 
             var filme = _mapper.Map<Filme>(filmeViewModel);
             await _filmeService.Atualizar(_mapper.Map<Filme>(filmeAtualizacao));

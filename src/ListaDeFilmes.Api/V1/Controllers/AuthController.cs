@@ -1,4 +1,5 @@
-﻿using ListaDeFilmes.Api.Extensions;
+﻿using ListaDeFilmes.Api.Controllers;
+using ListaDeFilmes.Api.Extensions;
 using ListaDeFilmes.Api.ViewModels;
 using ListaDeFilmes.Business.Interfaces;
 using Microsoft.AspNetCore.Identity;
@@ -12,16 +13,16 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ListaDeFilmes.Api.Controllers
+namespace ListaDeFilmes.Api.V1.Controllers
 {
-    //[ApiVersion("1.0")]
-    //[Route("api/v{version:apiVersion}")]
-    [Route("api")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}")]
+    //[Route("api")]
     public class AuthController : MainController
     {
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
-        private readonly AppSettings _appSettings; 
+        private readonly AppSettings _appSettings;
         //private readonly ILogger _logger;
 
 

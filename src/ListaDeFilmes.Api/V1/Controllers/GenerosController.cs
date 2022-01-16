@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ListaDeFilmes.Api.Controllers;
 using ListaDeFilmes.Api.Extensions;
 using ListaDeFilmes.Api.ViewModels;
 using ListaDeFilmes.Business.Interfaces;
@@ -10,10 +11,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ListaDeFilmes.Api.Controllers
+namespace ListaDeFilmes.Api.V1.Controllers
 {
     [Authorize]
-    [Route("api/generos")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/generos")]
+    //[Route("api/generos")]
     public class GenerosController : MainController
     {
 
@@ -24,7 +27,7 @@ namespace ListaDeFilmes.Api.Controllers
         public GenerosController(IGeneroRepository generoRepository,
                                  IGeneroService generoService,
                                  IMapper mapper,
-                                 INotificador notificador, 
+                                 INotificador notificador,
                                  IUser user) : base(notificador, user)
         {
             _generoRepository = generoRepository;
@@ -80,7 +83,7 @@ namespace ListaDeFilmes.Api.Controllers
 
             if (!ModelState.IsValid)
                 return CustomResponse(ModelState);
-                //return BadRequest(); //exemplo teste
+            //return BadRequest(); //exemplo teste
 
             var genero = _mapper.Map<Genero>(generoViewModel);
             await _generoService.Atualizar(genero);
