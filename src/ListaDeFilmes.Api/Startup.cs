@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -36,6 +37,8 @@ namespace ListaDeFilmes.Api
 
             services.AddApiConfig();
 
+            services.AddSwaggerConfig();
+
             services.ResolveDependencies();
 
             // Ignorar looping Json
@@ -45,13 +48,13 @@ namespace ListaDeFilmes.Api
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IApiVersionDescriptionProvider provider)
         {
             app.UseAuthentication(); // precisa vir antes da configuração do MVC, se não, não vai funcionar
 
             app.UseApiConfig(env);
 
-            //app.UseSwaggerConfig(provider);
+            app.UseSwaggerConfig(provider);
 
             //app.UseHealthChecks("/api/hc", new HealthCheckOptions()
             //{
