@@ -35,7 +35,7 @@ namespace ListaDeFilmes.Api.V1.Controllers
             _mapper = mapper;
         }
 
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpGet]
         public async Task<IEnumerable<GeneroViewModel>> ObterGeneros()
         {
