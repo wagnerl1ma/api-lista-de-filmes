@@ -20,7 +20,7 @@ colocar um breve resumo....
 
 # Tecnologias utilizadas
 ## Back end
-- Java
+- Java teste
 - Spring Boot
 - JPA / Hibernate
 - Maven
