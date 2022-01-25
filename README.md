@@ -6,9 +6,17 @@ API Lista de Filmes com ASP.NET Core
 # Sobre o projeto
 
 A ideia da criação do projeto API Lista de Filmes foi para treinar e revisar meus conhecimentos adquiridos no curso da plataforma desenvolvedor.io
-https://desenvolvedor.io/curso-online-rest-com-asp-net-core-webapi
 
-todo: colocar um breve resumo... ***
+Link do curso: https://desenvolvedor.io/curso-online-rest-com-asp-net-core-webapi
+
+### Resumo sobre o que foi feito:
+- Login e Autenticação com Json Web Token (JWT)
+- Autorização baseada em Claims via JWT
+- Documentação da API com Swagger 
+- Versionamento da API com Swagger 
+- Validação de saúde da API com Health Checks
+- Injeção de dependência
+- Respostas Personalizadas
 
 ## Layout web com Swagger
 ![Img 1](https://github.com/wagnerl1ma/API_ListaDeFilmes/blob/master/docs/imagens/api_filmes_img3_swagger.png)
@@ -25,13 +33,12 @@ todo: colocar um breve resumo... ***
 ## Back end
 - C#
 - .net Core 3.1
-- Identity
+- Identity (Login e Claims)
+- Swagger 
+- JSON Web Token (JWT)
 - Auto Mapper
-- JWT
-- ....
-- ------------------- todo: verificar todas as tecnologias usadas no curso  ***
+- CORS - Cross-Origin Resource Sharing
 ## Front end
-- HTML / CSS / JS
 - Swagger UI
 ## Banco de Dados
 - SQL Server
