@@ -1,8 +1,6 @@
 # API Lista de Filmes
 API Lista de Filmes com ASP.NET Core
 
-[![NPM](https://img.shields.io/npm/l/react)](https://github.com/wagnerl1ma/API_ListaDeFilmes/blob/master/LICENSE) 
-
 # Sobre o projeto
 
 A ideia da criação do projeto API Lista de Filmes foi para treinar e revisar meus conhecimentos adquiridos no curso da plataforma desenvolvedor.io
