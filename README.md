@@ -8,8 +8,12 @@ A ideia da criação do projeto API Lista de Filmes foi para treinar e revisar m
 Link do curso: https://desenvolvedor.io/curso-online-rest-com-asp-net-core-webapi
 
 ### Resumo sobre o que foi feito:
+- Separação do projeto em camadas
+- Isolamento das regras de negócio
 - Login e Autenticação com Json Web Token (JWT)
-- Autorização baseada em Claims via JWT
+- Segurança e Autorização baseada em Claims via JWT
+- Validações de dados no back-end
+- Migrations com Entity Framework Core
 - Documentação da API com Swagger 
 - Versionamento da API com Swagger 
 - Validação de saúde da API com Health Checks
@@ -32,6 +36,7 @@ Link do curso: https://desenvolvedor.io/curso-online-rest-com-asp-net-core-webap
 - C#
 - .net Core 3.1
 - Identity (Login e Claims)
+- Entity Framework Core
 - Swagger 
 - JSON Web Token (JWT)
 - Auto Mapper
