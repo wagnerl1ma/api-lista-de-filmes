@@ -1,6 +1,9 @@
+using HealthChecks.UI.Client;
 using ListaDeFilmes.Api.Configuration;
+using ListaDeFilmes.Api.Extensions;
 using ListaDeFilmes.Data.Context;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
@@ -41,6 +44,14 @@ namespace ListaDeFilmes.Api
 
             services.ResolveDependencies();
 
+            // verifica a saúde da aplicação e banco de dados
+            services.AddHealthChecks()
+                .AddCheck("Filmes", new SqlServerHealthCheck(Configuration.GetConnectionString("DefaultConnection")))
+                .AddSqlServer(Configuration.GetConnectionString("DefaultConnection"), name: "BancoSQL");
+
+            // Interface de HealthChecks
+            services.AddHealthChecksUI().AddInMemoryStorage();
+
             // Ignorar looping Json
             services.AddControllersWithViews()
                 .AddNewtonsoftJson(options =>
@@ -56,11 +67,13 @@ namespace ListaDeFilmes.Api
 
             app.UseSwaggerConfig(provider);
 
-            //app.UseHealthChecks("/api/hc", new HealthCheckOptions()
-            //{
-            //    Predicate = _ => true,
-            //    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
-            //});
+            app.UseHealthChecks("/api/hc", new HealthCheckOptions()
+            {
+                Predicate = _ => true,
+                ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+            });
+
+            app.UseHealthChecksUI(options => { options.UIPath = "/api/hc-ui"; });
         }
     }
 }
