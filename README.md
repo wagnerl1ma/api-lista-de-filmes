@@ -14,7 +14,7 @@ Link do curso: https://desenvolvedor.io/curso-online-rest-com-asp-net-core-webap
 - Segurança e Autorização baseada em Claims via JWT
 - Validações de dados no back-end
 - Migrations com Entity Framework Core
-- Documentação da API com Swagger 
+- Documentação da API com Swagger
 - Versionamento da API com Swagger 
 - Validação de saúde da API com Health Checks
 - Injeção de dependência
