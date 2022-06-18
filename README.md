@@ -54,5 +54,5 @@ git clone https://github.com/wagnerl1ma/API_ListaDeFilmes.git
 
 Wagner Lima
 
-https://www.linkedin.com/in/wagner-lima-de-araujo-138840174/
+https://www.linkedin.com/in/wagner-lima-138840174/
 
