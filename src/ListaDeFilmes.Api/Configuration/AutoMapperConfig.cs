@@ -1,10 +1,6 @@
 ﻿using AutoMapper;
 using ListaDeFilmes.Api.ViewModels;
 using ListaDeFilmes.Business.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ListaDeFilmes.Api.Configuration
 {

@@ -3,9 +3,7 @@ using ListaDeFilmes.Business.Notificacoes;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace ListaDeFilmes.Api.Controllers
 {
@@ -29,13 +27,6 @@ namespace ListaDeFilmes.Api.Controllers
                 UsuarioAutenticado = true;
             }
         }
-
-
-        //usar por enquanto este, depois usar o construtor acima
-        //protected MainController(INotificador notificador)
-        //{
-        //    _notificador = notificador;
-        //}
 
         protected bool OperacaoValida()
         {

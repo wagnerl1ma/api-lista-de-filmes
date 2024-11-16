@@ -9,6 +9,5 @@ namespace ListaDeFilmes.Business.Notificacoes
         {
             Mensagem = mensagem;
         }
-
     }
 }
