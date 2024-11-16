@@ -1,15 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FluentValidation" Version="8.6.2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Models\Validations\Documentos\" />
+    <PackageReference Include="FluentValidation" Version="11.10.0" />
   </ItemGroup>
 
 </Project>

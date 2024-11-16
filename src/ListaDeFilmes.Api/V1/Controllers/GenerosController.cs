@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace ListaDeFilmes.Api.V1.Controllers
@@ -35,7 +34,6 @@ namespace ListaDeFilmes.Api.V1.Controllers
             _mapper = mapper;
         }
 
-        //[AllowAnonymous]
         [HttpGet]
         public async Task<IEnumerable<GeneroViewModel>> ObterGeneros()
         {
@@ -45,9 +43,9 @@ namespace ListaDeFilmes.Api.V1.Controllers
 
 
         [HttpGet("{id:guid}")]
-        public async Task<ActionResult<FilmeViewModel>> ObterPorId(Guid id)
+        public async Task<ActionResult<GeneroViewModel>> ObterPorId(Guid id)
         {
-            var genero = _mapper.Map<FilmeViewModel>(await _generoRepository.ObterPorId(id));
+            var genero = _mapper.Map<GeneroViewModel>(await _generoRepository.ObterPorId(id));
 
             if (genero == null)
                 return NotFound(); //404

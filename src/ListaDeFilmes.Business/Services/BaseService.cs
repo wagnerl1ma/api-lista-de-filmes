@@ -3,9 +3,6 @@ using FluentValidation.Results;
 using ListaDeFilmes.Business.Interfaces;
 using ListaDeFilmes.Business.Models;
 using ListaDeFilmes.Business.Notificacoes;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ListaDeFilmes.Business.Services
 {

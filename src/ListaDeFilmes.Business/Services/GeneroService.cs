@@ -2,8 +2,6 @@
 using ListaDeFilmes.Business.Models;
 using ListaDeFilmes.Business.Models.Validations;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ListaDeFilmes.Business.Services

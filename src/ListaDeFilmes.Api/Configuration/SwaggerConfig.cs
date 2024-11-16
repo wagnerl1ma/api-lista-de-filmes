@@ -92,7 +92,7 @@ namespace ListaDeFilmes.Api.Configuration
             {
                 Title = "API Filmes",
                 Version = description.ApiVersion.ToString(),
-                Description = "API Filmes em .Net Core 3.1",
+                Description = "API Filmes em .Net 8",
                 Contact = new OpenApiContact() { Name = "Wagner Araujo", Email = "wagner.araujo92@outlook" },
                 License = new OpenApiLicense() { Name = "MIT", Url = new Uri("https://opensource.org/licenses/MIT") }
             };

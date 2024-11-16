@@ -1,26 +1,58 @@
-using Microsoft.AspNetCore.Hosting;
+using ListaDeFilmes.Api.Configuration;
+using ListaDeFilmes.Api.Extensions;
+using ListaDeFilmes.Data.Context;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace ListaDeFilmes.Api
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Configuration
+    .SetBasePath(builder.Environment.ContentRootPath)
+    .AddJsonFile("appsettings.json", true, true)
+    .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", true, true)
+    .AddEnvironmentVariables();
+
+// ConfigureServices
+
+builder.Services.AddDbContext<ListaDeFilmesContext>(options =>
 {
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
-            CreateHostBuilder(args).Build().Run();
-        }
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
-    }
-}
+builder.Services.AddIdentityConfig(builder.Configuration);
+
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+builder.Services.AddApiConfig();
+
+builder.Services.AddSwaggerConfig();
+
+builder.Services.ResolveDependencies();
+
+// verifica a saúde da aplicação e banco de dados
+builder.Services.AddHealthChecks()
+    .AddCheck("Filmes", new SqlServerHealthCheck(builder.Configuration.GetConnectionString("DefaultConnection")))
+    .AddSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"), name: "BancoSQL");
+
+// Interface de HealthChecks
+builder.Services.AddHealthChecksUI().AddInMemoryStorage();
+
+// Ignorar looping Json
+builder.Services.AddControllersWithViews()
+    .AddNewtonsoftJson(options =>
+    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
+var app = builder.Build();
+var apiVersionDescriptionProvider = app.Services.GetRequiredService<IApiVersionDescriptionProvider>();
+
+// Configure
+
+app.UseApiConfig(app.Environment);
+
+app.UseSwaggerConfig(apiVersionDescriptionProvider);
+
+app.Run();
